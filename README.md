@@ -33,21 +33,41 @@
 	pyright --version
 
 Створюємо директорію, в якій буде зберігатися конфіг для nvim.
-	
 	Викорстовуй ці команди:
 	cd ~
 	mkdir -p ~/.config/nvim/
-	nvim ~/.config/nvim/init.vim
 
-В якості менеджера плагінів будемо використовувати vim-plug
-	
-	Використовуй цю команду з розділі Instll for Neovim, з оф. репозиторію github:
+Встановимо менеджер плагінів vim-plug
+	Використовуй цю команду з розділі Install for Neovim, з оф. репозиторію github:
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 	Доступні плагіни описані в репозиторії.
 
-У файл з конфігом напишемо:
-	
+У директорію ~/.config/nvim/ скопіюємо файл init.vim
+	Викорстовуй ці команди:
+	nvim init.vim
+	i
+	esc :w
+	:so %
+	проскролити та натиснути enter, незважаючи на помилки
 
-# nvim-config
+Встановимо плагіни	
+	Викорстовуй ці команди:
+	:PlugInstall натиснути enter
+
+Для того щоб pyright запустився, в директорії проекту повиненно бути
+ - або визначений git-репозиторій (тобто повинен бути файл .git);
+ - або файл requirements.txt;
+
+В директорії проекту потрібно створити файл pyrightconfig.json
+{
+	"venv": "venv",
+	:venvPath": "."
+}
+
+Вкажемо що вказана директорія пакет
+true > __init__.py
+
+
+
